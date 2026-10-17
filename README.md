@@ -47,6 +47,7 @@ Edit `assets/content.js`:
 - Project `video`: public gameplay watch-page URL.
 - Project `source`: approved public source repository.
 - Project `build`: approved build download URL.
+- Project `gallery`: any number of `{ type: 'video' | 'image', title, caption, url }` entries. Set each entry's `url` to replace its placeholder. Videos support YouTube watch/Shorts links and local `.mp4`/`.webm` files, with playback controls. Images support local files and HTTPS URLs. Closing a project stops its media playback.
 
 Add approved images and PDFs inside `assets/`. The current project artwork is typographic illustration, not gameplay screenshots. Replace it with real project media before applying. The four project breakdowns open in accessible native dialogs and have shareable `#project-…` URLs.
 

@@ -15,9 +15,23 @@ $('#projects').innerHTML = projects.map((p, i) => `<article class="project proje
 const dialog = $('#project-dialog');
 let trigger;
 function projectMedia(p) {
-  const watch = safeUrl(p.video);
-  const image = safeUrl(p.media);
-  return `<figure class="detail-media">${image ? `<img src="${image}" alt="${escape(p.name)} gameplay screenshot">` : `<div class="media-empty"><span class="play-outline" aria-hidden="true">▶</span><strong>${escape(p.name)} gameplay</strong><span>VIDEO / SCREENSHOT PLACEHOLDER</span></div>`}<figcaption>${watch ? `<a class="button" href="${watch}" target="_blank" rel="noopener noreferrer">Watch gameplay ↗</a>` : 'Gameplay footage to be added'}</figcaption></figure>`;
+  const items = p.gallery || [];
+  const videos = items.filter(item => item.type === 'video');
+  const images = items.filter(item => item.type === 'image');
+  return `<section class="case-section"><div class="gallery-heading"><h3>Gameplay in motion</h3><span>${videos.length} DEMONSTRATIONS</span></div><div class="video-gallery">${videos.map(renderMedia).join('')}</div></section><section class="case-section"><div class="gallery-heading"><h3>A closer look</h3><span>SCREENSHOT GALLERY</span></div><div class="image-gallery">${images.map(renderMedia).join('')}</div></section>`;
+}
+function renderMedia(item, index) {
+  const url = safeUrl(item.url);
+  let player = '';
+  if (url && item.type === 'image') player = `<img src="${url}" alt="${escape(item.title)}" loading="lazy">`;
+  if (url && item.type === 'video') {
+    const parsed = new URL(item.url, location.href);
+    const id = parsed.hostname === 'youtu.be' ? parsed.pathname.slice(1) : /(^|\.)youtube\.com$/.test(parsed.hostname) ? (parsed.searchParams.get('v') || parsed.pathname.match(/\/(?:shorts|embed)\/([\w-]+)/)?.[1]) : '';
+    if (id && /^[\w-]{11}$/.test(id)) player = `<iframe src="https://www.youtube-nocookie.com/embed/${id}" title="${escape(item.title)}" loading="lazy" allow="fullscreen; picture-in-picture" allowfullscreen></iframe>`;
+    else if (/\.(mp4|webm)$/i.test(parsed.pathname)) player = `<video controls preload="metadata" playsinline src="${url}" aria-label="${escape(item.title)}"></video>`;
+    else player = `<a class="external-video" href="${url}" target="_blank" rel="noopener noreferrer"><span class="play-outline" aria-hidden="true">▶</span>Watch ${escape(item.title)} ↗</a>`;
+  }
+  return `<figure class="gallery-item">${player || `<div class="gallery-placeholder"><span class="slot-index">${String(index + 1).padStart(2,'0')} / ${item.type === 'video' ? 'VIDEO' : 'IMAGE'}</span><span class="slot-symbol" aria-hidden="true">${item.type === 'video' ? '▷' : '▧'}</span><strong>${escape(item.title)}</strong><span>${item.type === 'video' ? 'Gameplay video' : 'Screenshot'} placeholder</span></div>`}<figcaption><h4>${escape(item.title)}</h4><p>${escape(item.caption || '')}</p></figcaption></figure>`;
 }
 function showProject(id) {
   const p = projects.find(p => p.id === id); if (!p) return;
@@ -28,5 +42,5 @@ function showProject(id) {
 document.addEventListener('click', event => { const button = event.target.closest('[data-project]'); if(button) { trigger = button; showProject(button.dataset.project); history.replaceState(null, '', `#project-${button.dataset.project}`); } });
 $('#close-dialog').addEventListener('click',()=>dialog.close());
 dialog.addEventListener('click',event=> { if(event.target === dialog) { const r = dialog.getBoundingClientRect(); if(event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close(); } });
-dialog.addEventListener('close',()=> { history.replaceState(null, '', '#work'); trigger?.focus(); });
+dialog.addEventListener('close',()=> { dialog.querySelectorAll('video').forEach(video => video.pause()); $('#project-detail').innerHTML = ''; history.replaceState(null, '', '#work'); trigger?.focus(); });
 if(location.hash.startsWith('#project-')) showProject(location.hash.slice(9));

@@ -9,4 +9,11 @@ for(const match of html.matchAll(/(?:src|href)="(assets\/[^"]+)"/g)) await acces
 for(const match of html.matchAll(/href="#([^"]+)"/g))assert(html.includes(`id="${match[1]}"`),`Missing anchor ${match[1]}`);
 assert(!html.includes('href="#"'),'No dummy links');
 assert(profile.github);
+for (const p of projects) {
+  assert(p.gallery.filter(item => item.type === 'video').length >= 2, `${p.id} needs multiple videos`);
+  for (const item of p.gallery) {
+    assert(['video', 'image'].includes(item.type) && item.title && item.caption);
+    if (item.url) assert(['https:', 'http:'].includes(new URL(item.url, 'https://portfolio.invalid/').protocol));
+  }
+}
 console.log('Passed: project content, unique IDs, local assets, section anchors, and configured URLs.');
