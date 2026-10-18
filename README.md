@@ -40,7 +40,7 @@ See https://developers.cloudflare.com/pages/get-started/git-integration/ for the
 
 ## Add your content
 
-Feature Gym uses a custom mechanic-by-mechanic case study in `assets/feature-gym.js`. Its five gameplay clips and poster images live in `assets/media/feature-gym/`. The parkour architecture, slide, vault, and combo diagrams are scalable SVGs recreated from the owner's reference layout. Vaulting has a labeled media placeholder until a dedicated clip is provided. The existing `#project-prototypes` URL is retained for compatibility.
+Feature Gym uses a custom mechanic-by-mechanic case study in `assets/feature-gym.js`. Its six gameplay demonstrations and poster images live in `assets/media/feature-gym/`. Sideways wall-running and upward wall-running are separate clips, cut from 54.3–59.7s and 138.0–141.8s in the supplied recording. The parkour architecture, slide, vault, and combo diagrams are scalable SVGs recreated from the owner's reference layout. Vaulting has a labeled media placeholder until a dedicated clip is provided. The existing `#project-prototypes` URL is retained for compatibility.
 
 Edit `assets/content.js`:
 

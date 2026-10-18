@@ -13,7 +13,7 @@ assert(profile.github);
 const gym = renderFeatureGym();
 for (const match of gym.matchAll(/(?:src|poster)="(assets\/[^"]+)"/g)) await access(new URL('../'+match[1],import.meta.url));
 for (const match of gym.matchAll(/href="#([^"]+)"/g)) assert(gym.includes(`id="${match[1]}"`), `Missing Feature Gym section ${match[1]}`);
-assert.equal((gym.match(/<video /g)||[]).length,5,'Feature Gym should include five recorded mechanics');
+assert.equal((gym.match(/<video /g)||[]).length,6,'Feature Gym should include six recorded mechanics');
 for (const p of projects) {
   assert(p.gallery.filter(item => item.type === 'video').length >= 2, `${p.id} needs multiple videos`);
   for (const item of p.gallery) {

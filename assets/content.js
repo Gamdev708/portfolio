@@ -15,7 +15,7 @@ export const projects = [
     category: 'Personal project', tags: ['Unreal Engine', 'C++', 'Plugins'],
     summary: 'A gameplay playground built around two reusable plugins: a combo system and an advanced parkour system.',
     focus: 'Character gameplay / Plugin architecture',
-    media: 'assets/media/feature-gym/wall-run-and-jump.jpg', video: '', source: '', build: '',
+    media: 'assets/media/feature-gym/wall-run-clean.jpg', video: '', source: '', build: '',
     gallery: [
       {
         "type": "video",
