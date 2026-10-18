@@ -10,3 +10,5 @@
 .official-game-art{display:block;width:100%;max-width:700px;height:auto;margin:30px auto;border:1px solid var(--line)}
 .activity-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.activity-grid article{padding:22px;border:1px solid var(--line);background:var(--surface)}.activity-grid h4{margin:0 0 12px;font-size:20px;font-weight:400;color:var(--accent)}.activity-grid p{font-size:14px;line-height:1.8;color:var(--muted);margin:0}@media(max-width:650px){.activity-grid{grid-template-columns:1fr}}
 .activity-animation{position:relative;margin:-22px -22px 20px}.activity-animation img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:#090d0b}.gif-toggle{position:absolute;bottom:10px;right:10px;padding:8px 10px;border:1px solid #ffffff55;background:#101314df;font-size:11px}.activity-grid .activity-credit{font:10px monospace;color:#a2aaa8;margin-top:14px}
+
+.profile-photo{display:block;width:220px;max-width:100%;height:auto;margin-top:28px;border:1px solid var(--line);border-radius:6px}@media(max-width:650px){.profile-photo{width:180px;margin-top:22px}}
