@@ -40,7 +40,7 @@ See https://developers.cloudflare.com/pages/get-started/git-integration/ for the
 
 ## Add your content
 
-Feature Gym uses a custom mechanic-by-mechanic case study in `assets/feature-gym.js`. Its six gameplay demonstrations and poster images live in `assets/media/feature-gym/`. Sideways wall-running and upward wall-running are separate clips, cut from 54.3–59.7s and 138.0–141.8s in the supplied recording. The parkour architecture, slide, vault, and combo diagrams are scalable SVGs recreated from the owner's reference layout. Vaulting has a labeled media placeholder until a dedicated clip is provided. The existing `#project-prototypes` URL is retained for compatibility.
+Feature Gym uses a custom mechanic-by-mechanic case study in `assets/feature-gym.js`. Its seven gameplay demonstrations and poster images live in `assets/media/feature-gym/`. Sideways wall-running and upward wall-running are separate clips, cut from 54.3–59.7s and 138.0–141.8s in the supplied recording. The parkour architecture, slide, vault, and combo diagrams are scalable SVGs recreated from the owner's reference layout. Vaulting has a labeled media placeholder until a dedicated clip is provided. The existing `#project-prototypes` URL is retained for compatibility.
 
 Edit `assets/content.js`:
 
@@ -54,3 +54,5 @@ Edit `assets/content.js`:
 Add approved images and PDFs inside `assets/`. The current project artwork is typographic illustration, not gameplay screenshots. Replace it with real project media before applying. The four project breakdowns open in accessible native dialogs and have shareable `#project-…` URLs.
 
 Before publishing, complete `docs/CONTENT-CHECKLIST.md`. The draft has no invented dates, performance figures, contact addresses, or gameplay footage. No Unreal source, proprietary assets, credentials, or project binaries have been copied into this repository.
+
+The delayed combo demonstration uses 190.0–195.2 seconds (3:10–3:15.2) from the original recording.
