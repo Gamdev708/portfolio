@@ -42,7 +42,9 @@ function comboDiagram() {
   return svg('DYNAMIC COMBO SYSTEM',600,455,body);
 }
 function clip(file,title,caption) {
-  return `<figure class="gym-clip"><video controls loop muted playsinline preload="none" poster="assets/media/feature-gym/${file}.jpg" aria-label="${esc(title)}"><source src="assets/media/feature-gym/${file}.mp4" type="video/mp4"></video><figcaption><strong>${esc(title)}</strong><span>${esc(caption)}</span></figcaption></figure>`;
+  const reduced = typeof matchMedia !== 'undefined' && matchMedia('(prefers-reduced-motion: reduce)').matches;
+  const base = `assets/media/feature-gym/${file}`;
+  return `<figure class="gym-clip"><div class="gym-animation"><img src="${base}.${reduced ? 'jpg' : 'gif'}" alt="${esc(title)} gameplay" width="480" height="283" loading="lazy"><button type="button" class="gif-toggle" data-gif="${base}.gif" data-still="${base}.jpg" aria-pressed="${!reduced}">${reduced ? 'Play animation' : 'Pause animation'}</button></div><figcaption><strong>${esc(title)}</strong><span>${esc(caption)}</span></figcaption></figure>`;
 }
 function copy(kicker,title,body) { return `<div class="gym-copy"><span class="eyebrow">${esc(kicker)}</span><h3>${esc(title)}</h3>${body}</div>`; }
 export function renderFeatureGym() {
