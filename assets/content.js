@@ -69,11 +69,12 @@ export const projects = [
     diagram: ['Player input', 'Attack / movement state', 'Animation & motion', 'Gameplay response'],
   },
   {
-    id: 'aeolida', number: '02', title: 'Conversations with character', name: 'Aeolida',
-    category: 'Team project', tags: ['Unreal Engine', 'C++', 'NPC dialogue'],
-    summary: 'An AI-powered NPC dialogue system developed in a team project, alongside gameplay bug fixing.',
+    id: 'aeolida', number: '02', title: 'Aeoliada — NPC dialogue & gameplay', name: 'Aeoliada',
+    category: 'Arcanion · Team project', tags: ['Unreal Engine', 'C++', 'NPC dialogue'],
+    summary: 'Contributed NPC dialogue development and gameplay bug fixes to Arcanion’s rhythm-focused action RPG.',
     focus: 'Dialogue integration / Collaboration',
-    media: '', video: '', source: '', build: '',
+    media: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3813780/10479372b7b509bf2f00d749de9c04f3445069ef/header.jpg?t=1778387369', video: '', source: '', build: '',
+    store: 'https://store.steampowered.com/app/3813780/Aeoliada/',
     gallery: [
       {
         "type": "video",
@@ -101,7 +102,8 @@ export const projects = [
       }
     ],
     sections: [
-      ['My contribution', 'Worked with the team to create the AI-powered NPC dialogue system and resolve bugs.'],
+      ['About the game', 'Aeoliada is an action RPG by Arcanion combining melee combat with rhythm mechanics. The official Steam page presents the game and its public media.'],
+      ['My contribution', 'Worked with the team to create AI-powered NPC dialogue intended for the game’s release, and resolved gameplay bugs. My work focused on dialogue integration, conversation flow, and character configuration.'],
       ['Dialogue architecture', 'The project separates character interaction into a component and conversation display into a world subsystem. Completion actions coordinate topic selection, chat requests, and conversation endings.'],
       ['Character configuration', 'The dialogue component exposes personality, speech style, AI-provider settings, and relationship information. Conversation history supplies context for NPC interactions.'],
       ['Working with a team', 'My focus was dialogue integration and bug fixing. The project includes contributions from other team members; this page does not claim authorship of the entire game or the underlying AI models.'],
