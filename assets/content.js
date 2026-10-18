@@ -2,7 +2,7 @@ export const profile = {
   name: 'Pasindu Siriwardana',
   email: '',
   github: 'https://github.com/Gamdev708',
-  linkedin: '',
+  linkedin: 'https://www.linkedin.com/in/pasindu-siriwardana-a39727219/',
   resume: '',
   intro: 'I build character gameplay and reusable systems with Unreal Engine and C++. My work spans combat, traversal, AI-powered NPC dialogue, and vehicle gameplay.',
 };
