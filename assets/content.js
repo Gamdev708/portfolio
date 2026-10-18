@@ -162,6 +162,8 @@ export const projects = [
     focus: 'Studio experience / Cultural experience',
     media: 'https://i.ytimg.com/vi/yzVl4EppNAo/hqdefault.jpg', video: 'https://www.youtube.com/watch?v=yzVl4EppNAo', source: '', build: '',
     activities: [
+      {name: 'Festival exploration', gif: 'assets/media/virtual-awurudu/exploration.gif', poster: 'assets/media/virtual-awurudu/exploration.jpg', mediaKind: 'gameplay excerpt', credit: 'Gameplay capture · KAVEE NIRMAL / Game · RAM Studios', description: 'Player movement through the festival grounds and activity areas.'},
+      {name: 'Emote wheel', gif: 'assets/media/virtual-awurudu/emote-wheel.gif', poster: 'assets/media/virtual-awurudu/emote-wheel.jpg', mediaKind: 'gameplay excerpt', credit: 'Gameplay capture · KAVEE NIRMAL / Game · RAM Studios', description: 'The radial menu used to select character emotes.'},
       {name: 'Kana Mutti', gif: 'assets/media/virtual-awurudu/kana-mutti.gif', poster: 'assets/media/virtual-awurudu/kana-mutti.jpg', description: 'The traditional pot-breaking game, represented in the festival experience.'},
       {name: 'Kotta Pora', gif: 'assets/media/virtual-awurudu/kotta-pora.gif', poster: 'assets/media/virtual-awurudu/kotta-pora.jpg', description: 'A pillow-fighting festival game built around balance and competition.'},
       {name: 'Kamba Adima', description: 'Tug-of-war, bringing a familiar team competition into the virtual festival.'},
@@ -178,23 +180,22 @@ export const projects = [
       },
       {
         "type": "video",
-        "title": "Kana Mutti — Festival activity spotlight",
-        "caption": "A short cinematic excerpt showing the pot-breaking activity. This presents the game, not sole authorship of the mechanic.",
-        "url": "https://www.youtube.com/watch?v=yzVl4EppNAo",
-        "start": 53,
-        "end": 60
+        "title": "Virtual Awurudu — Gameplay walkthrough",
+        "caption": "Festival exploration and character interactions. Gameplay capture by KAVEE NIRMAL; game by RAM Studios.",
+        "url": "https://www.youtube.com/watch?v=BVmiMy6Y9_8",
+        "start": 140
       },
       {
         "type": "image",
         "title": "Festival environment",
-        "caption": "An approved image from the experience.",
-        "url": ""
+        "caption": "Festival square and activity areas. Frame from KAVEE NIRMAL’s gameplay video; game by RAM Studios.",
+        "url": "assets/media/virtual-awurudu/festival-square.jpg"
       },
       {
         "type": "image",
-        "title": "Gameplay moment",
-        "caption": "An approved screenshot of a festival activity.",
-        "url": ""
+        "title": "Lakeside environment",
+        "caption": "The lakeside area during exploration. Frame from KAVEE NIRMAL’s gameplay video; game by RAM Studios.",
+        "url": "assets/media/virtual-awurudu/lakeside.jpg"
       }
     ],
     sections: [

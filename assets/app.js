@@ -41,7 +41,7 @@ function renderMedia(item, index) {
 }
 function renderActivity(a) {
   const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
-  return `<article>${safeUrl(a.gif) ? `<figure class="activity-animation"><img src="${safeUrl(reduced ? a.poster : a.gif)}" alt="${escape(a.name)} cinematic excerpt" loading="lazy"><button type="button" class="gif-toggle" data-gif="${safeUrl(a.gif)}" data-still="${safeUrl(a.poster)}" aria-pressed="${!reduced}">${reduced ? 'Play animation' : 'Pause animation'}</button></figure>` : ''}<h4>${escape(a.name)}</h4><p>${escape(a.description)}</p>${a.gif ? '<p class="activity-credit">Cinematic excerpt · RAM Studios</p>' : ''}</article>`;
+  return `<article>${safeUrl(a.gif) ? `<figure class="activity-animation"><img src="${safeUrl(reduced ? a.poster : a.gif)}" alt="${escape(a.name)} ${escape(a.mediaKind || 'cinematic excerpt')}" loading="lazy"><button type="button" class="gif-toggle" data-gif="${safeUrl(a.gif)}" data-still="${safeUrl(a.poster)}" aria-pressed="${!reduced}">${reduced ? 'Play animation' : 'Pause animation'}</button></figure>` : ''}<h4>${escape(a.name)}</h4><p>${escape(a.description)}</p>${a.gif ? `<p class="activity-credit">${escape(a.credit || 'Cinematic excerpt · RAM Studios')}</p>` : ''}</article>`;
 }
 document.addEventListener('click', event => {
   const button = event.target.closest('.gif-toggle');
