@@ -1,4 +1,5 @@
 import {profile, projects} from './content.js';
+import {renderFeatureGym} from './feature-gym.js';
 const $ = selector => document.querySelector(selector);
 const escape = value => String(value).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const safeUrl = value => {
@@ -35,12 +36,20 @@ function renderMedia(item, index) {
 }
 function showProject(id) {
   const p = projects.find(p => p.id === id); if (!p) return;
+  dialog.classList.toggle('feature-gym-dialog', id === 'prototypes');
   $('#project-detail').innerHTML = `<span class="eyebrow">${escape(p.category)} / ${escape(p.name)}</span><h2 id="project-title">${escape(p.title)}</h2><p class="detail-summary">${escape(p.summary)}</p>${projectMedia(p)}<div class="tags">${p.tags.map(t=>`<span>${escape(t)}</span>`).join('')}</div>${p.diagram.length ? `<ol class="flow" aria-label="System overview">${p.diagram.map(t=>`<li>${escape(t)}</li>`).join('')}</ol>` : ''}${p.sections.map(([title,body])=>`<section class="detail-section"><h3>${escape(title)}</h3><p>${escape(body)}</p></section>`).join('')}<div class="actions">${link(p.video,'Watch gameplay','button')}${link(p.source,'View source')}${link(p.build,'Download build')}</div>${!p.video ? '<p class="pending">Gameplay footage will be added before launch.</p>' : ''}`;
+  if (id === 'prototypes') $('#project-detail').innerHTML = renderFeatureGym();
   if (!dialog.open) dialog.showModal();
   dialog.scrollTop = 0;
 }
 document.addEventListener('click', event => { const button = event.target.closest('[data-project]'); if(button) { trigger = button; showProject(button.dataset.project); history.replaceState(null, '', `#project-${button.dataset.project}`); } });
 $('#close-dialog').addEventListener('click',()=>dialog.close());
+dialog.addEventListener('click',event=> {
+  const anchor = event.target.closest('.gym-nav a');
+  if (!anchor) return;
+  event.preventDefault();
+  dialog.querySelector(anchor.getAttribute('href'))?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});
+});
 dialog.addEventListener('click',event=> { if(event.target === dialog) { const r = dialog.getBoundingClientRect(); if(event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close(); } });
 dialog.addEventListener('close',()=> { dialog.querySelectorAll('video').forEach(video => video.pause()); $('#project-detail').innerHTML = ''; history.replaceState(null, '', '#work'); trigger?.focus(); });
 if(location.hash.startsWith('#project-')) showProject(location.hash.slice(9));

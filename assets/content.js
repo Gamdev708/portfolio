@@ -11,11 +11,11 @@ export const profile = {
 // Media accepts a local image path or an HTTPS image URL. Video is a watch-page URL.
 export const projects = [
   {
-    id: 'prototypes', number: '01', title: 'Combat & traversal', name: 'Prototypes',
+    id: 'prototypes', number: '01', title: 'Feature Gym — Combat & traversal', name: 'Feature Gym',
     category: 'Personal project', tags: ['Unreal Engine', 'C++', 'Plugins'],
     summary: 'A gameplay playground built around two reusable plugins: a combo system and an advanced parkour system.',
     focus: 'Character gameplay / Plugin architecture',
-    media: '', video: '', source: '', build: '',
+    media: 'assets/media/feature-gym/wall-run-and-jump.jpg', video: '', source: '', build: '',
     gallery: [
       {
         "type": "video",

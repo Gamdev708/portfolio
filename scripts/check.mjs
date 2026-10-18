@@ -1,6 +1,7 @@
 import assert from 'node:assert/strict';
 import {readFile,access} from 'node:fs/promises';
 import {profile,projects} from '../assets/content.js';
+import {renderFeatureGym} from '../assets/feature-gym.js';
 const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
 assert.equal(new Set(projects.map(p=>p.id)).size,projects.length,'Project IDs must be unique');
 assert.equal(projects.length,4);
@@ -9,6 +10,10 @@ for(const match of html.matchAll(/(?:src|href)="(assets\/[^"]+)"/g)) await acces
 for(const match of html.matchAll(/href="#([^"]+)"/g))assert(html.includes(`id="${match[1]}"`),`Missing anchor ${match[1]}`);
 assert(!html.includes('href="#"'),'No dummy links');
 assert(profile.github);
+const gym = renderFeatureGym();
+for (const match of gym.matchAll(/(?:src|poster)="(assets\/[^"]+)"/g)) await access(new URL('../'+match[1],import.meta.url));
+for (const match of gym.matchAll(/href="#([^"]+)"/g)) assert(gym.includes(`id="${match[1]}"`), `Missing Feature Gym section ${match[1]}`);
+assert.equal((gym.match(/<video /g)||[]).length,5,'Feature Gym should include five recorded mechanics');
 for (const p of projects) {
   assert(p.gallery.filter(item => item.type === 'video').length >= 2, `${p.id} needs multiple videos`);
   for (const item of p.gallery) {
