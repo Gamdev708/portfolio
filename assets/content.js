@@ -162,10 +162,11 @@ export const projects = [
     focus: 'Studio experience / Cultural experience',
     media: 'https://i.ytimg.com/vi/yzVl4EppNAo/hqdefault.jpg', video: 'https://www.youtube.com/watch?v=yzVl4EppNAo', source: '', build: '',
     activities: [
-      {name: 'Kana Mutti', description: 'The traditional pot-breaking game, represented in the festival experience.'},
-      {name: 'Kotta Pora', description: 'A pillow-fighting festival game built around balance and competition.'},
+      {name: 'Kana Mutti', gif: 'assets/media/virtual-awurudu/kana-mutti.gif', poster: 'assets/media/virtual-awurudu/kana-mutti.jpg', description: 'The traditional pot-breaking game, represented in the festival experience.'},
+      {name: 'Kotta Pora', gif: 'assets/media/virtual-awurudu/kotta-pora.gif', poster: 'assets/media/virtual-awurudu/kotta-pora.jpg', description: 'A pillow-fighting festival game built around balance and competition.'},
       {name: 'Kamba Adima', description: 'Tug-of-war, bringing a familiar team competition into the virtual festival.'},
-      {name: 'Lissana Gaha', description: 'The traditional greased-pole climbing challenge.'}
+      {name: 'Lissana Gaha', gif: 'assets/media/virtual-awurudu/lissana-gaha.gif', poster: 'assets/media/virtual-awurudu/lissana-gaha.jpg', description: 'The traditional greased-pole climbing challenge.'},
+      {name: 'Rabana', gif: 'assets/media/virtual-awurudu/rabana.gif', poster: 'assets/media/virtual-awurudu/rabana.jpg', description: 'Traditional group drumming featured in the festival cinematic.'}
     ],
     references: [{title: 'Epic Games · UE 5.1 LevelSequenceActor: Replicate Playback', url: 'https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/LevelSequenceActor?application_version=5.1'}],
     gallery: [

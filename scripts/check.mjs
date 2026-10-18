@@ -16,6 +16,10 @@ for (const match of gym.matchAll(/href="#([^"]+)"/g)) assert(gym.includes(`id="$
 assert.equal((gym.match(/<video /g)||[]).length,7,'Feature Gym should include seven recorded mechanics');
 for (const p of projects) {
   assert(p.gallery.filter(item => item.type === 'video').length >= 2, `${p.id} needs multiple videos`);
+  for (const activity of p.activities || []) {
+    for (const path of [activity.gif, activity.poster]) if (path) await access(new URL('../'+path,import.meta.url));
+    if (activity.gif) assert(activity.poster, 'Animated activities need a still image');
+  }
   for (const item of p.gallery) {
     assert(['video', 'image'].includes(item.type) && item.title && item.caption);
     if (item.url) assert(['https:', 'http:'].includes(new URL(item.url, 'https://portfolio.invalid/').protocol));
