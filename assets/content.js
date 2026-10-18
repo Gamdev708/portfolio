@@ -158,7 +158,7 @@ export const projects = [
   {
     id: 'virtual-aurudu', number: '04', title: 'Virtual Awurudu — Festival & multiplayer', name: 'Virtual Awurudu',
     category: 'RAM Studios · Internship', tags: ['Unreal Engine 5.1', 'Multiplayer', 'Sequencer'],
-    summary: 'Contributed to RAM Studios’ virtual Sri Lankan New Year experience, including a fix for multiplayer sequence-playback replication.',
+    summary: 'Contributed to RAM Studios’ virtual Sri Lankan New Year experience, checking individual festival games and fixing multiplayer sequence-playback replication issues.',
     focus: 'Studio experience / Cultural experience',
     media: 'https://i.ytimg.com/vi/yzVl4EppNAo/hqdefault.jpg', video: 'https://www.youtube.com/watch?v=yzVl4EppNAo', source: '', build: '',
     activities: [
@@ -199,7 +199,7 @@ export const projects = [
     ],
     sections: [
       ['Project context', 'Virtual Awurudu is a Sri Lankan New Year festival experience by RAM Studios, presented through SriVerse. I contributed during my internship in Sri Lanka, working in Unreal Engine 5.1.'],
-      ['My contribution — multiplayer bug fixing', 'Fixed a sequence-playback replication issue by enabling Replicate Playback on the relevant Level Sequence Actor. This allowed server-side playback of that sequence to synchronize across clients.'],
+      ['My contribution — multiplayer bug fixing', 'Checked each festival game individually for sequence-playback replication issues. For affected sequences across multiple games, enabled Replicate Playback on the relevant Level Sequence Actors so server-side playback synchronized across clients.'],
       ['Why this setting matters', 'A Level Sequence can play locally without synchronizing to other players. UE 5.1 exposes Replicate Playback specifically for synchronizing server playback to clients. This describes the sequence-playback fix, rather than a claim that one setting replicates every gameplay system or animated actor.'],
       ['Festival games', 'The project includes Kana Mutti, Kotta Pora, Kamba Adima, and Lissana Gaha. These sections provide context for the team’s game; my highlighted contribution is the replication bug fix.'],
     ],
