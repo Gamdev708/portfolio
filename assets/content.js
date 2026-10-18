@@ -77,6 +77,12 @@ export const projects = [
     store: 'https://store.steampowered.com/app/3813780/Aeoliada/',
     gallery: [
       {
+        type: 'video', title: 'Aeoliada — First Look Trailer',
+        caption: 'Official game trailer · Arcanion · includes the full game presentation, beyond my individual contribution.',
+        url: 'assets/media/aeoliada/aeoliada-trailer.mp4',
+        poster: 'assets/media/aeoliada/trailer-poster.jpg'
+      },
+      {
         "type": "video",
         "title": "NPC conversation",
         "caption": "A complete player-to-NPC conversation.",
@@ -150,23 +156,32 @@ export const projects = [
     diagram: ['Shared vehicle parent', 'Bike / lorry subclasses', 'Separate configurations', 'Manual testing'],
   },
   {
-    id: 'virtual-aurudu', number: '04', title: 'A festival, experienced virtually.', name: 'Virtual Aurudu',
-    category: 'RAM Studios · Internship', tags: ['Unreal Engine', 'Festival experience'],
-    summary: 'Contributed to a virtual Sri Lankan Aurudu festival experience during an internship at RAM Studios.',
+    id: 'virtual-aurudu', number: '04', title: 'Virtual Awurudu — Festival & multiplayer', name: 'Virtual Awurudu',
+    category: 'RAM Studios · Internship', tags: ['Unreal Engine 5.1', 'Multiplayer', 'Sequencer'],
+    summary: 'Contributed to RAM Studios’ virtual Sri Lankan New Year experience, including a fix for multiplayer sequence-playback replication.',
     focus: 'Studio experience / Cultural experience',
-    media: '', video: '', source: '', build: '',
+    media: 'https://i.ytimg.com/vi/yzVl4EppNAo/hqdefault.jpg', video: 'https://www.youtube.com/watch?v=yzVl4EppNAo', source: '', build: '',
+    activities: [
+      {name: 'Kana Mutti', description: 'The traditional pot-breaking game, represented in the festival experience.'},
+      {name: 'Kotta Pora', description: 'A pillow-fighting festival game built around balance and competition.'},
+      {name: 'Kamba Adima', description: 'Tug-of-war, bringing a familiar team competition into the virtual festival.'},
+      {name: 'Lissana Gaha', description: 'The traditional greased-pole climbing challenge.'}
+    ],
+    references: [{title: 'Epic Games · UE 5.1 LevelSequenceActor: Replicate Playback', url: 'https://dev.epicgames.com/documentation/en-us/unreal-engine/python-api/class/LevelSequenceActor?application_version=5.1'}],
     gallery: [
       {
         "type": "video",
-        "title": "Festival walkthrough",
-        "caption": "A walkthrough of the virtual Aurudu experience.",
-        "url": ""
+        "title": "Virtual Awurudu — Official cinematic teaser",
+        "caption": "RAM Studios’ SriVerse festival presentation. Cinematic footage, rather than a technical demonstration of my fix.",
+        "url": "https://www.youtube.com/watch?v=yzVl4EppNAo"
       },
       {
         "type": "video",
-        "title": "Contribution spotlight",
-        "caption": "Highlight your individual work once confirmed.",
-        "url": ""
+        "title": "Kana Mutti — Festival activity spotlight",
+        "caption": "A short cinematic excerpt showing the pot-breaking activity. This presents the game, not sole authorship of the mechanic.",
+        "url": "https://www.youtube.com/watch?v=yzVl4EppNAo",
+        "start": 53,
+        "end": 60
       },
       {
         "type": "image",
@@ -182,9 +197,11 @@ export const projects = [
       }
     ],
     sections: [
-      ['Project context', 'Virtual Aurudu is a virtual festival experience based on Sri Lankan Aurudu, developed during my internship at RAM Studios in Sri Lanka.'],
-      ['Contribution scope', 'I contributed as an intern. A detailed breakdown of my individual responsibilities and approved project footage will be added after review.'],
+      ['Project context', 'Virtual Awurudu is a Sri Lankan New Year festival experience by RAM Studios, presented through SriVerse. I contributed during my internship in Sri Lanka, working in Unreal Engine 5.1.'],
+      ['My contribution — multiplayer bug fixing', 'Fixed a sequence-playback replication issue by enabling Replicate Playback on the relevant Level Sequence Actor. This allowed server-side playback of that sequence to synchronize across clients.'],
+      ['Why this setting matters', 'A Level Sequence can play locally without synchronizing to other players. UE 5.1 exposes Replicate Playback specifically for synchronizing server playback to clients. This describes the sequence-playback fix, rather than a claim that one setting replicates every gameplay system or animated actor.'],
+      ['Festival games', 'The project includes Kana Mutti, Kotta Pora, Kamba Adima, and Lissana Gaha. These sections provide context for the team’s game; my highlighted contribution is the replication bug fix.'],
     ],
-    diagram: [],
+    diagram: ['Server starts sequence', 'Replicate Playback enabled', 'Playback state synchronizes', 'Clients play sequence'],
   },
 ];

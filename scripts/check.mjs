@@ -19,6 +19,7 @@ for (const p of projects) {
   for (const item of p.gallery) {
     assert(['video', 'image'].includes(item.type) && item.title && item.caption);
     if (item.url) assert(['https:', 'http:'].includes(new URL(item.url, 'https://portfolio.invalid/').protocol));
+    for (const path of [item.url,item.poster]) if(path?.startsWith('assets/')) await access(new URL('../'+path,import.meta.url));
   }
 }
 console.log('Passed: project content, unique IDs, local assets, section anchors, and configured URLs.');
