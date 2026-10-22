@@ -56,3 +56,10 @@ Add approved images and PDFs inside `assets/`. The current project artwork is ty
 Before publishing, complete `docs/CONTENT-CHECKLIST.md`. The draft has no invented dates, performance figures, contact addresses, or gameplay footage. No Unreal source, proprietary assets, credentials, or project binaries have been copied into this repository.
 
 The delayed combo demonstration uses 190.0–195.2 seconds (3:10–3:15.2) from the original recording.
+
+### Cloudflare Workers Git deployment
+
+Build command: npm run build. Deploy command: npx wrangler deploy. The tracked wrangler.jsonc sets the Worker name to portfolio and serves only dist/. Keep the root directory at the repository root. Do not configure the asset directory as a dot (the repository root). The build checks every output file against the 25 MiB asset limit.
+
+For Cloudflare Pages, use npm run build with output directory dist; no Workers deploy command is needed.
+
