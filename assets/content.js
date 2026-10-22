@@ -70,8 +70,8 @@ export const projects = [
   },
   {
     id: 'aeolida', number: '02', title: 'Aeoliada — NPC dialogue & gameplay', name: 'Aeoliada',
-    category: 'Arcanion · Team project', tags: ['Unreal Engine', 'C++', 'NPC dialogue'],
-    summary: 'Contributed NPC dialogue development and gameplay bug fixes to Arcanion’s rhythm-focused action RPG.',
+    category: 'Arcanion · Team project', tags: ['Unreal Engine', 'C++', 'MVVM-inspired UI'],
+    summary: 'Contributed NPC dialogue, relationship interactions, quest UI and gameplay bug fixes to Arcanion’s rhythm-focused action RPG.',
     focus: 'Dialogue integration / Collaboration',
     media: 'https://shared.fastly.steamstatic.com/store_item_assets/steam/apps/3813780/10479372b7b509bf2f00d749de9c04f3445069ef/header.jpg?t=1778387369', video: '', source: '', build: '',
     store: 'https://store.steampowered.com/app/3813780/Aeoliada/',
@@ -109,7 +109,8 @@ export const projects = [
     ],
     sections: [
       ['About the game', 'Aeoliada is an action RPG by Arcanion combining melee combat with rhythm mechanics. The official Steam page presents the game and its public media.'],
-      ['My contribution', 'Worked with the team to create AI-powered NPC dialogue intended for the game’s release, and resolved gameplay bugs. My work focused on dialogue integration, conversation flow, and character configuration.'],
+      ['My contribution', 'Worked with the team to create AI-powered NPC dialogue intended for the game’s release, and resolved gameplay bugs. My work covered dialogue interaction and presentation, relationship feedback, quest state and UI controllers, and character configuration.'],
+      ['UI design approach', 'I use MVVM principles to separate presentation from gameplay state. Quest widgets handle the view, a widget controller tracks selection and forwards updates, and the quest subsystem manages progress. Dialogue follows a manager-mediated flow rather than strict automatic MVVM binding.'],
       ['Dialogue architecture', 'The project separates character interaction into a component and conversation display into a world subsystem. Completion actions coordinate topic selection, chat requests, and conversation endings.'],
       ['Character configuration', 'The dialogue component exposes personality, speech style, AI-provider settings, and relationship information. Conversation history supplies context for NPC interactions.'],
       ['Working with a team', 'My focus was dialogue integration and bug fixing. The project includes contributions from other team members; this page does not claim authorship of the entire game or the underlying AI models.'],

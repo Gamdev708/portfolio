@@ -2,6 +2,7 @@ import assert from 'node:assert/strict';
 import {readFile,access} from 'node:fs/promises';
 import {profile,projects} from '../assets/content.js';
 import {renderFeatureGym} from '../assets/feature-gym.js';
+import {renderAeoliadaDiagrams} from '../assets/aeoliada-diagrams.js';
 const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
 assert.equal(new Set(projects.map(p=>p.id)).size,projects.length,'Project IDs must be unique');
 assert.equal(projects.length,4);
@@ -28,3 +29,9 @@ for (const p of projects) {
   }
 }
 console.log('Passed: project content, unique IDs, local assets, section anchors, and configured URLs.');
+
+const aeoliada = renderAeoliadaDiagrams();
+assert.equal((aeoliada.match(/<svg /g)||[]).length,4);
+for (const match of aeoliada.matchAll(/aria-labelledby="([^"]+)"/g)) {
+  for (const id of match[1].split(' ')) assert(aeoliada.includes(`id="${id}"`), 'Missing diagram label');
+}
