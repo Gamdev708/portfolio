@@ -109,10 +109,10 @@ export const projects = [
     ],
     sections: [
       ['About the game', 'Aeoliada is an action RPG by Arcanion combining melee combat with rhythm mechanics. The official Steam page presents the game and its public media.'],
-      ['My contribution', 'Worked with the team to create AI-powered NPC dialogue intended for the game’s release, and resolved gameplay bugs. My work covered dialogue interaction and presentation, relationship feedback, quest state and UI controllers, and character configuration.'],
+      ['My contribution', 'Worked with the team to create AI-powered NPC dialogue intended for the game’s release, and resolved gameplay bugs. I implemented the core C++ logic for dialogue interaction, relationship feedback, quest state and UI controllers. I exposed configuration through Blueprints, data tables and data assets so designers could tune behavior and content without editing the underlying C++ logic.'],
       ['UI design approach', 'I use MVVM principles to separate presentation from gameplay state. Quest widgets handle the view, a widget controller tracks selection and forwards updates, and the quest subsystem manages progress. Dialogue follows a manager-mediated flow rather than strict automatic MVVM binding.'],
       ['Dialogue architecture', 'The project separates character interaction into a component and conversation display into a world subsystem. Completion actions coordinate topic selection, chat requests, and conversation endings.'],
-      ['Character configuration', 'The dialogue component exposes personality, speech style, AI-provider settings, and relationship information. Conversation history supplies context for NPC interactions.'],
+      ['Built for designer iteration', 'I provided editable settings for NPC personality, speech style, characteristic phrases, reference dialogue, topic preferences, relationship limits and response curves. Quest data assets expose objective descriptions, types, targets, required amounts and navigation options. Designers can create and tune content using these exposed controls while the core gameplay logic remains in C++.'],
       ['Working with a team', 'My focus was dialogue integration and bug fixing. The project includes contributions from other team members; this page does not claim authorship of the entire game or the underlying AI models.'],
     ],
     diagram: ['Player message', 'Dialogue interaction', 'AI provider', 'NPC dialogue UI'],
