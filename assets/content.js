@@ -118,46 +118,7 @@ export const projects = [
     diagram: ['Player message', 'Dialogue interaction', 'AI provider', 'NPC dialogue UI'],
   },
   {
-    id: 'safe-drive', number: '03', title: 'Different vehicles. Shared foundations.', name: 'UForSafeDriveV1',
-    category: 'RAM Studios · Internship', tags: ['Unreal Engine', 'Vehicles', 'Testing'],
-    summary: 'Reused parent classes and created bike and lorry subclasses, with separate configurations tuned through manual testing.',
-    focus: 'Inheritance / Vehicle configuration',
-    media: '', video: '', source: '', build: '',
-    gallery: [
-      {
-        "type": "video",
-        "title": "Bike gameplay",
-        "caption": "Demonstrate bike handling and controls.",
-        "url": ""
-      },
-      {
-        "type": "video",
-        "title": "Lorry gameplay",
-        "caption": "Demonstrate the separate lorry configuration.",
-        "url": ""
-      },
-      {
-        "type": "image",
-        "title": "Bike configuration",
-        "caption": "Vehicle settings used for the bike.",
-        "url": ""
-      },
-      {
-        "type": "image",
-        "title": "Lorry configuration",
-        "caption": "Vehicle settings used for the lorry.",
-        "url": ""
-      }
-    ],
-    sections: [
-      ['My contribution', 'During my internship at RAM Studios in Sri Lanka, reused parent classes, created subclasses for bike and lorry vehicles, and supplied separate configurations after manually testing both.'],
-      ['Shared behavior and specialization', 'The work used inheritance to retain common behavior while allowing different vehicle configurations. The available two-wheeled vehicle class derives from AWheeledVehiclePawn and binds throttle, brake, and steering input.'],
-      ['Validation', 'Manual testing informed the separate bike and lorry configurations. No performance or test-coverage claims are made here.'],
-    ],
-    diagram: ['Shared vehicle parent', 'Bike / lorry subclasses', 'Separate configurations', 'Manual testing'],
-  },
-  {
-    id: 'virtual-aurudu', number: '04', title: 'Virtual Awurudu — Festival & multiplayer', name: 'Virtual Awurudu',
+    id: 'virtual-aurudu', number: '03', title: 'Virtual Awurudu — Festival & multiplayer', name: 'Virtual Awurudu',
     category: 'RAM Studios · Internship', tags: ['Unreal Engine 5.1', 'Multiplayer', 'Sequencer'],
     summary: 'Contributed to RAM Studios’ virtual Sri Lankan New Year experience, checking individual festival games and fixing multiplayer sequence-playback replication issues.',
     focus: 'Studio experience / Cultural experience',
@@ -206,5 +167,44 @@ export const projects = [
       ['Festival games', 'The project includes Kana Mutti, Kotta Pora, Kamba Adima, and Lissana Gaha. These sections provide context for the team’s game; my highlighted contribution is the replication bug fix.'],
     ],
     diagram: ['Server starts sequence', 'Replicate Playback enabled', 'Playback state synchronizes', 'Clients play sequence'],
+  },
+  {
+    id: 'safe-drive', number: '04', title: 'Different vehicles. Shared foundations.', name: 'UForSafeDriveV1',
+    category: 'RAM Studios · Internship', tags: ['Unreal Engine', 'Vehicles', 'Testing'],
+    summary: 'Reused parent classes and created bike and lorry subclasses, with separate configurations tuned through manual testing.',
+    focus: 'Inheritance / Vehicle configuration',
+    media: '', video: '', source: '', build: '',
+    gallery: [
+      {
+        "type": "video",
+        "title": "Bike gameplay",
+        "caption": "Demonstrate bike handling and controls.",
+        "url": ""
+      },
+      {
+        "type": "video",
+        "title": "Lorry gameplay",
+        "caption": "Demonstrate the separate lorry configuration.",
+        "url": ""
+      },
+      {
+        "type": "image",
+        "title": "Bike configuration",
+        "caption": "Vehicle settings used for the bike.",
+        "url": ""
+      },
+      {
+        "type": "image",
+        "title": "Lorry configuration",
+        "caption": "Vehicle settings used for the lorry.",
+        "url": ""
+      }
+    ],
+    sections: [
+      ['My contribution', 'During my internship at RAM Studios in Sri Lanka, reused parent classes, created subclasses for bike and lorry vehicles, and supplied separate configurations after manually testing both.'],
+      ['Shared behavior and specialization', 'The work used inheritance to retain common behavior while allowing different vehicle configurations. The available two-wheeled vehicle class derives from AWheeledVehiclePawn and binds throttle, brake, and steering input.'],
+      ['Validation', 'Manual testing informed the separate bike and lorry configurations. No performance or test-coverage claims are made here.'],
+    ],
+    diagram: ['Shared vehicle parent', 'Bike / lorry subclasses', 'Separate configurations', 'Manual testing'],
   },
 ];
