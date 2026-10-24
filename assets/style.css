@@ -35,3 +35,18 @@
 .feature-gym>.project-context-banner{--context-bg:#1c183e;--context-border:#656181;--context-accent:#ac9bdf;--context-text:#ebe8fa;--context-muted:#afaccb;color:var(--context-text)}
 .feature-gym>.project-context-banner h3{color:var(--context-text)}
 .feature-gym>.project-context-banner p{color:var(--context-muted)}
+
+/* Aeoliada: deep-blue, cyan and magenta drawn from the official logo. */
+.aeoliada-dialog{--bg:#0a1030;--surface:#131b40;--text:#f0efff;--muted:#b5bfdf;--accent:#68e8f5;--line:#354477;background:var(--bg);color:var(--text);border-color:#58639c}
+.aeoliada-dialog .project-context-banner{--context-bg:#151c43;--context-border:#65528f;--context-accent:#68e8f5;--context-text:#f0efff;--context-muted:#b5bfdf;border-top:1px solid #ca60c8;box-shadow:inset 0 1px 0 #e65bd41a}
+.aeoliada-dialog .context-status{color:#f194df}
+.aeoliada-dialog .button{background:#68e8f5;color:#0a1030}.aeoliada-dialog .button:hover{background:#a2f5ff}
+.aeoliada-dialog .eyebrow,.aeoliada-dialog .gallery-heading>span{color:#ed93dd}
+.aeoliada-dialog .gallery-placeholder{background:#131b40;border-color:#354477}
+.aeoliada-dialog .aeo-diagram{background:#131b40;border-color:#455588}
+.aeoliada-dialog .aeo-diagram rect,.aeoliada-dialog .aeo-diagram ellipse,.aeoliada-dialog .aeo-diagram circle{fill:#18264e;stroke:#68d9ed}
+.aeoliada-dialog .aeo-diagram path{stroke:#68d9ed}.aeoliada-dialog .aeo-diagram .aeo-arrow-head{fill:#68d9ed;stroke:none}
+.aeoliada-dialog .aeo-diagram .aeo-boundary{fill:none;stroke:#696298}
+.aeoliada-dialog .aeo-diagram .aeo-sub{fill:#c0c8e8}
+.aeoliada-dialog .aeo-diagram figcaption strong{color:#ef94df}
+.aeoliada-dialog .text-link:hover,.aeoliada-dialog .aeo-notes h4{color:#ef94df}
