@@ -3,6 +3,7 @@ import {readFile,access} from 'node:fs/promises';
 import {profile,projects} from '../assets/content.js';
 import {renderFeatureGym} from '../assets/feature-gym.js';
 import {renderAeoliadaDiagrams} from '../assets/aeoliada-diagrams.js';
+import {renderHorrorDiagrams} from '../assets/horror-diagrams.js';
 const html=await readFile(new URL('../index.html',import.meta.url),'utf8');
 assert.equal(new Set(projects.map(p=>p.id)).size,projects.length,'Project IDs must be unique');
 assert.equal(projects.length,4);
@@ -17,13 +18,14 @@ for (const match of gym.matchAll(/href="#([^"]+)"/g)) assert(gym.includes(`id="$
 assert.equal((gym.match(/class="gym-animation"/g)||[]).length,7,'Feature Gym should include seven animated mechanics');
 for (const match of gym.matchAll(/data-still="(assets\/[^"]+)"/g)) await access(new URL('../'+match[1],import.meta.url));
 for (const p of projects) {
-  assert(p.gallery.filter(item => item.type === 'video').length >= 2, `${p.id} needs multiple videos`);
+  assert(p.gallery.filter(item => item.type === 'video' || item.type === 'gif').length >= 2, `${p.id} needs multiple videos`);
   for (const activity of p.activities || []) {
     for (const path of [activity.gif, activity.poster]) if (path) await access(new URL('../'+path,import.meta.url));
     if (activity.gif) assert(activity.poster, 'Animated activities need a still image');
   }
   for (const item of p.gallery) {
-    assert(['video', 'image'].includes(item.type) && item.title && item.caption);
+    assert(['video', 'image', 'gif'].includes(item.type) && item.title && item.caption);
+    if (item.type === 'gif') assert(item.url && item.poster, 'GIF demonstrations need an animation and still');
     if (item.url) assert(['https:', 'http:'].includes(new URL(item.url, 'https://portfolio.invalid/').protocol));
     for (const path of [item.url,item.poster]) if(path?.startsWith('assets/')) await access(new URL('../'+path,import.meta.url));
   }
@@ -35,3 +37,6 @@ assert.equal((aeoliada.match(/<svg /g)||[]).length,4);
 for (const match of aeoliada.matchAll(/aria-labelledby="([^"]+)"/g)) {
   for (const id of match[1].split(' ')) assert(aeoliada.includes(`id="${id}"`), 'Missing diagram label');
 }
+
+assert.equal((renderHorrorDiagrams().match(/<svg /g)||[]).length,2);
+assert.deepEqual(projects.map(p=>p.id),['prototypes','aeolida','virtual-aurudu','horror-jam']);

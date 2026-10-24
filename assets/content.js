@@ -169,42 +169,27 @@ export const projects = [
     diagram: ['Server starts sequence', 'Replicate Playback enabled', 'Playback state synchronizes', 'Clients play sequence'],
   },
   {
-    id: 'safe-drive', number: '04', title: 'Different vehicles. Shared foundations.', name: 'UForSafeDriveV1',
-    category: 'RAM Studios · Internship', tags: ['Unreal Engine', 'Vehicles', 'Testing'],
-    summary: 'Reused parent classes and created bike and lorry subclasses, with separate configurations tuned through manual testing.',
-    focus: 'Inheritance / Vehicle configuration',
-    media: '', video: '', source: '', build: '',
+    id: 'horror-jam', number: '04', title: 'Horror prototype — Interaction & camera systems', name: 'WAUAFHorrorGameJam26',
+    category: 'Team project · In development', tags: ['Unreal Engine 5.4', 'C++', 'Blueprint interfaces'],
+    summary: 'Built reusable interaction, carrying and room-camera logic for a team horror-game prototype, with Blueprint hooks and editable settings for designers.',
+    focus: 'Reusable gameplay / Designer iteration',
+    media: 'assets/media/horror-jam/interaction-debug.jpg', video: '', source: 'https://github.com/Gamdev708/WAUAFHorrorGameJam26', build: '',
     gallery: [
-      {
-        "type": "video",
-        "title": "Bike gameplay",
-        "caption": "Demonstrate bike handling and controls.",
-        "url": ""
-      },
-      {
-        "type": "video",
-        "title": "Lorry gameplay",
-        "caption": "Demonstrate the separate lorry configuration.",
-        "url": ""
-      },
-      {
-        "type": "image",
-        "title": "Bike configuration",
-        "caption": "Vehicle settings used for the bike.",
-        "url": ""
-      },
-      {
-        "type": "image",
-        "title": "Lorry configuration",
-        "caption": "Vehicle settings used for the lorry.",
-        "url": ""
-      }
+      {type: 'gif', title: 'Room-camera transitions', caption: 'Fixed camera views change while moving through the greybox test area · 5.4 seconds.', url: 'assets/media/horror-jam/camera-transitions.gif', poster: 'assets/media/horror-jam/camera-transitions.jpg'},
+      {type: 'gif', title: 'Item interaction', caption: 'An item-consumption example demonstrates an object-specific response through the shared interaction interface · 3.9 seconds.', url: 'assets/media/horror-jam/item-interaction.gif', poster: 'assets/media/horror-jam/item-interaction.jpg'},
+      {type: 'gif', title: 'Carrying & release', caption: 'A carryable test object is attached to the character and released. Debug shapes show the interaction scan · 4 seconds.', url: 'assets/media/horror-jam/carry-and-release.gif', poster: 'assets/media/horror-jam/carry-and-release.jpg'},
+      {type: 'image', title: 'Interaction debugging', caption: 'My gameplay capture: the debug scan visualizes interaction detection in the greybox prototype.', url: 'assets/media/horror-jam/interaction-debug.jpg'},
+      {type: 'image', title: 'Greybox test area', caption: 'A test environment for checking item interactions and camera views before the demo level is finalized.', url: 'assets/media/horror-jam/greybox-overview.jpg'}
     ],
     sections: [
-      ['My contribution', 'During my internship at RAM Studios in Sri Lanka, reused parent classes, created subclasses for bike and lorry vehicles, and supplied separate configurations after manually testing both.'],
-      ['Shared behavior and specialization', 'The work used inheritance to retain common behavior while allowing different vehicle configurations. The available two-wheeled vehicle class derives from AWheeledVehiclePawn and binds throttle, brake, and steering input.'],
-      ['Validation', 'Manual testing informed the separate bike and lorry configurations. No performance or test-coverage claims are made here.'],
+      ['Project context', 'An in-development horror-game team project. The current work establishes reusable interaction and room-camera systems in a greybox test level. The demo gameplay loop and final level design are being planned with the team.'],
+      ['My contribution — core logic for designers', 'I implemented the C++ interaction scan, carrying component, basic inventory operations, and room-transition trigger logic. I exposed Blueprint interaction events and editable settings so designers can create object-specific responses and configure the level without rewriting the shared C++ behavior.'],
+      ['One interaction interface, different objects', 'The character performs a forward sphere sweep, checks which actors support the shared interface, and evaluates whether they can be interacted with. Focus events let object Blueprints respond when targeted, while an interaction action passes the player to the selected object. The interface also exposes prompt text and carry eligibility.'],
+      ['Carrying and inventory', 'The carrying component checks whether an object is carryable, attaches it to a configured character socket, and detaches it on release. This is socket-based carrying. A separate inventory component supplies basic add, remove and clear operations for item references.'],
+      ['Room transitions & camera selection', 'A configurable overlap trigger selects an assigned camera and broadcasts destination-room and spawn-point tags for other systems or Blueprints to handle. Designers can set a default camera and choose one-way or repeatable activation. Broadcasting those tags is a hook for progression, rather than a claim that this component performs level streaming itself.'],
+      ['Built for iteration', 'Designers can tune interaction range and sweep radius, choose a carry socket, implement object behavior and focus feedback in Blueprints, and assign transition cameras and room tags per trigger. I test the systems by playing the prototype and inspecting on-screen debug output.'],
+      ['Current scope', 'The footage shows prototype interactions and camera behavior, not a finished horror level. Generator, fuse-box, gear and wiring puzzles are design ideas under discussion with the team. This page highlights the implemented foundations rather than presenting those ideas as completed mechanics.']
     ],
-    diagram: ['Shared vehicle parent', 'Bike / lorry subclasses', 'Separate configurations', 'Manual testing'],
+    diagram: [],
   },
 ];
