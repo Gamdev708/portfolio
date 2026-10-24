@@ -96,15 +96,15 @@ export const projects = [
       },
       {
         "type": "image",
-        "title": "Conversation interface",
-        "caption": "NPC dialogue and player choices.",
-        "url": ""
+        "title": "Dialogue settings exposed to designers",
+        "caption": "Blueprint Details panel: character identity, personality, relationship descriptions and shared history can be configured without editing C++.",
+        "url": "assets/media/aeoliada/dialogue-blueprint-settings.png"
       },
       {
         "type": "image",
-        "title": "Dialogue configuration",
-        "caption": "Character settings or system architecture.",
-        "url": ""
+        "title": "Relationship settings & state",
+        "caption": "Blueprint Details panel: heart limits, topic preferences and the difficulty curve sit alongside visible wounded-state and cracked-heart information. This example uses a maximum of 50 relationship hearts.",
+        "url": "assets/media/aeoliada/relationship-blueprint-settings.png"
       }
     ],
     sections: [
