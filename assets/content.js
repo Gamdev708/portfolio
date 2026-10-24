@@ -114,6 +114,7 @@ export const projects = [
       ['Dialogue architecture', 'The project separates character interaction into a component and conversation display into a world subsystem. Completion actions coordinate topic selection, chat requests, and conversation endings.'],
       ['Built for designer iteration', 'I provided editable settings for NPC personality, speech style, characteristic phrases, reference dialogue, topic preferences, relationship limits and response curves. Quest data assets expose objective descriptions, types, targets, required amounts and navigation options. Designers can create and tune content using these exposed controls while the core gameplay logic remains in C++.'],
       ['Working with a team', 'My focus was dialogue integration and bug fixing. The project includes contributions from other team members; this page does not claim authorship of the entire game or the underlying AI models.'],
+      ['What I learned — documenting for the team', 'Working with the team taught me to document the work I completed, summarize what changed, and write clear, step-by-step instructions. I learned to explain systems in a way teammates could understand and follow, helping them use the features and continue working with them.'],
     ],
     diagram: ['Player message', 'Dialogue interaction', 'AI provider', 'NPC dialogue UI'],
   },
