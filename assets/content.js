@@ -170,8 +170,8 @@ export const projects = [
   },
   {
     id: 'horror-jam', number: '04', title: 'Untitled horror game — Gameplay programming', name: 'Untitled horror game',
-    category: 'WHAT ARE YOU AFRAID OF? · Team project', tags: ['Unreal Engine 5.4', 'C++', 'Blueprint interfaces'],
-    summary: 'Gameplay programmer on a team horror game in development. Built reusable interaction, carrying and room-camera logic, with Blueprint hooks and editable settings for designers.',
+    category: 'WORK IN PROGRESS · Team game jam project', tags: ['Unreal Engine 5.4', 'C++', 'Blueprint interfaces'],
+    summary: 'A work-in-progress horror game being made by a team for the WHAT ARE YOU AFRAID OF? game jam. The title is still undecided. I am responsible for gameplay programming, building the interaction, carrying and room-camera systems.',
     focus: 'Reusable gameplay / Designer iteration',
     media: 'assets/media/horror-jam/interaction-debug.jpg', video: '', source: 'https://github.com/Gamdev708/WAUAFHorrorGameJam26', build: '',
     jam: 'https://itch.io/jam/what-are-you-afraid-of-',
