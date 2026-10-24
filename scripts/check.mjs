@@ -23,7 +23,7 @@ for (const p of projects) {
     for (const path of [activity.gif, activity.poster]) if (path) await access(new URL('../'+path,import.meta.url));
     if (activity.gif) assert(activity.poster, 'Animated activities need a still image');
   }
-  for (const item of p.gallery) {
+  for (const item of [...p.gallery, ...(p.conceptArt || [])]) {
     assert(['video', 'image', 'gif'].includes(item.type) && item.title && item.caption);
     if (item.type === 'gif') assert(item.url && item.poster, 'GIF demonstrations need an animation and still');
     if (item.url) assert(['https:', 'http:'].includes(new URL(item.url, 'https://portfolio.invalid/').protocol));

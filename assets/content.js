@@ -169,9 +169,9 @@ export const projects = [
     diagram: ['Server starts sequence', 'Replicate Playback enabled', 'Playback state synchronizes', 'Clients play sequence'],
   },
   {
-    id: 'horror-jam', number: '04', title: 'Horror prototype — Interaction & camera systems', name: 'WAUAFHorrorGameJam26',
+    id: 'horror-jam', number: '04', title: 'Untitled horror game — Gameplay programming', name: 'Untitled horror game',
     category: 'WHAT ARE YOU AFRAID OF? · Team project', tags: ['Unreal Engine 5.4', 'C++', 'Blueprint interfaces'],
-    summary: 'Built reusable interaction, carrying and room-camera logic for a team horror-game prototype, with Blueprint hooks and editable settings for designers.',
+    summary: 'Gameplay programmer on a team horror game in development. Built reusable interaction, carrying and room-camera logic, with Blueprint hooks and editable settings for designers.',
     focus: 'Reusable gameplay / Designer iteration',
     media: 'assets/media/horror-jam/interaction-debug.jpg', video: '', source: 'https://github.com/Gamdev708/WAUAFHorrorGameJam26', build: '',
     jam: 'https://itch.io/jam/what-are-you-afraid-of-',
@@ -182,9 +182,14 @@ export const projects = [
       {type: 'image', title: 'Interaction debugging', caption: 'My gameplay capture: the debug scan visualizes interaction detection in the greybox prototype.', url: 'assets/media/horror-jam/interaction-debug.jpg'},
       {type: 'image', title: 'Greybox test area', caption: 'A test environment for checking item interactions and camera views before the demo level is finalized.', url: 'assets/media/horror-jam/greybox-overview.jpg'}
     ],
+    conceptArt: [
+      {type: 'image', title: 'Character outfit exploration', caption: 'Team concept art · work in progress. Outfit and colour variations explored by the art team; not my artwork or a final design.', url: 'assets/media/horror-jam/character-outfit-concepts.png'},
+      {type: 'image', title: 'Character silhouette & hairstyle exploration', caption: 'Team concept art · work in progress. Alternative character designs developed by the art team.', url: 'assets/media/horror-jam/character-hair-concepts.png'},
+      {type: 'image', title: 'Creature design exploration', caption: 'Team concept art · work in progress. Creature studies explore the game’s visual direction; these are not implemented enemy mechanics.', url: 'assets/media/horror-jam/creature-concepts.png'}
+    ],
     sections: [
-      ['Project context', 'An in-development team horror game being created for the WHAT ARE YOU AFRAID OF? jam on itch.io, hosted by earacorn. The jam invites creators to explore their personal fears through horror. My current work establishes reusable interaction and room-camera systems in a greybox test level while the team plans the demo gameplay loop and final level design.'],
-      ['My contribution — core logic for designers', 'I implemented the C++ interaction scan, carrying component, basic inventory operations, and room-transition trigger logic. I exposed Blueprint interaction events and editable settings so designers can create object-specific responses and configure the level without rewriting the shared C++ behavior.'],
+      ['Project context', 'A team horror game being developed for the WHAT ARE YOU AFRAID OF? jam on itch.io, hosted by earacorn. The game title is still undecided. I am responsible for gameplay programming; the team develops the art, design and other disciplines together. The jam invites creators to explore their personal fears through horror. My current work establishes reusable interaction and room-camera systems in a greybox test level while the team plans the demo gameplay loop and final level design.'],
+      ['My role — gameplay programmer', 'I am in charge of gameplay programming for the team. I implemented the C++ interaction scan, carrying component, basic inventory operations, and room-transition trigger logic. I exposed Blueprint interaction events and editable settings so designers can create object-specific responses and configure the level without rewriting the shared C++ behavior.'],
       ['One interaction interface, different objects', 'The character performs a forward sphere sweep, checks which actors support the shared interface, and evaluates whether they can be interacted with. Focus events let object Blueprints respond when targeted, while an interaction action passes the player to the selected object. The interface also exposes prompt text and carry eligibility.'],
       ['Carrying and inventory', 'The carrying component checks whether an object is carryable, attaches it to a configured character socket, and detaches it on release. This is socket-based carrying. A separate inventory component supplies basic add, remove and clear operations for item references.'],
       ['Room transitions & camera selection', 'A configurable overlap trigger selects an assigned camera and broadcasts destination-room and spawn-point tags for other systems or Blueprints to handle. Designers can set a default camera and choose one-way or repeatable activation. Broadcasting those tags is a hook for progression, rather than a claim that this component performs level streaming itself.'],
