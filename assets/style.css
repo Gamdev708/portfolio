@@ -26,3 +26,12 @@
 .project-context-banner{margin:26px 0 30px;padding:26px;border:1px solid #71834e;border-left:4px solid var(--accent);background:#1d251b}.context-status{color:var(--accent);font:11px monospace;letter-spacing:1.5px}.project-context-banner h3{font-size:24px;font-weight:400;line-height:1.3;margin:15px 0 12px}.project-context-banner p{font-size:14px;line-height:1.8;color:var(--muted);margin:0}.project-context-banner dl{display:grid;grid-template-columns:1fr 1fr 1.3fr;gap:22px;margin:24px 0 0}.project-context-banner dt{font:10px monospace;letter-spacing:1px;color:var(--accent);text-transform:uppercase;margin-bottom:8px}.project-context-banner dd{margin:0;font-size:14px;line-height:1.6}@media(max-width:650px){.project-context-banner{padding:20px}.project-context-banner dl{grid-template-columns:1fr;gap:16px}}
 
 .feature-gym>.project-context-banner{margin:0 50px 30px;font-family:Arial,Helvetica,sans-serif;color:#eceee8}.feature-gym>.project-context-banner h3{color:#eceee8;font-style:normal}.feature-gym>.project-context-banner p{color:#a2aaa8}@media(max-width:650px){.feature-gym>.project-context-banner{margin:0 22px 24px}}
+
+/* Summary panels inherit the visual palette of their project. */
+.project-context-banner{--context-bg:#1d251b;--context-border:#71834e;--context-accent:var(--accent);--context-text:var(--text);--context-muted:var(--muted);background:var(--context-bg);border-color:var(--context-border);border-left-color:var(--context-accent);color:var(--context-text)}
+.project-context-banner .context-status,.project-context-banner dt{color:var(--context-accent)}
+.project-context-banner h3,.project-context-banner dd{color:var(--context-text)}
+.project-context-banner p{color:var(--context-muted)}
+.feature-gym>.project-context-banner{--context-bg:#1c183e;--context-border:#656181;--context-accent:#ac9bdf;--context-text:#ebe8fa;--context-muted:#afaccb;color:var(--context-text)}
+.feature-gym>.project-context-banner h3{color:var(--context-text)}
+.feature-gym>.project-context-banner p{color:var(--context-muted)}
