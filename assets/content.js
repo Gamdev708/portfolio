@@ -170,10 +170,11 @@ export const projects = [
   },
   {
     id: 'horror-jam', number: '04', title: 'Horror prototype — Interaction & camera systems', name: 'WAUAFHorrorGameJam26',
-    category: 'Team project · In development', tags: ['Unreal Engine 5.4', 'C++', 'Blueprint interfaces'],
+    category: 'WHAT ARE YOU AFRAID OF? · Team project', tags: ['Unreal Engine 5.4', 'C++', 'Blueprint interfaces'],
     summary: 'Built reusable interaction, carrying and room-camera logic for a team horror-game prototype, with Blueprint hooks and editable settings for designers.',
     focus: 'Reusable gameplay / Designer iteration',
     media: 'assets/media/horror-jam/interaction-debug.jpg', video: '', source: 'https://github.com/Gamdev708/WAUAFHorrorGameJam26', build: '',
+    jam: 'https://itch.io/jam/what-are-you-afraid-of-',
     gallery: [
       {type: 'gif', title: 'Room-camera transitions', caption: 'Fixed camera views change while moving through the greybox test area · 5.4 seconds.', url: 'assets/media/horror-jam/camera-transitions.gif', poster: 'assets/media/horror-jam/camera-transitions.jpg'},
       {type: 'gif', title: 'Item interaction', caption: 'An item-consumption example demonstrates an object-specific response through the shared interaction interface · 3.9 seconds.', url: 'assets/media/horror-jam/item-interaction.gif', poster: 'assets/media/horror-jam/item-interaction.jpg'},
@@ -182,7 +183,7 @@ export const projects = [
       {type: 'image', title: 'Greybox test area', caption: 'A test environment for checking item interactions and camera views before the demo level is finalized.', url: 'assets/media/horror-jam/greybox-overview.jpg'}
     ],
     sections: [
-      ['Project context', 'An in-development horror-game team project. The current work establishes reusable interaction and room-camera systems in a greybox test level. The demo gameplay loop and final level design are being planned with the team.'],
+      ['Project context', 'An in-development team horror game being created for the WHAT ARE YOU AFRAID OF? jam on itch.io, hosted by earacorn. The jam invites creators to explore their personal fears through horror. My current work establishes reusable interaction and room-camera systems in a greybox test level while the team plans the demo gameplay loop and final level design.'],
       ['My contribution — core logic for designers', 'I implemented the C++ interaction scan, carrying component, basic inventory operations, and room-transition trigger logic. I exposed Blueprint interaction events and editable settings so designers can create object-specific responses and configure the level without rewriting the shared C++ behavior.'],
       ['One interaction interface, different objects', 'The character performs a forward sphere sweep, checks which actors support the shared interface, and evaluates whether they can be interacted with. Focus events let object Blueprints respond when targeted, while an interaction action passes the player to the selected object. The interface also exposes prompt text and carry eligibility.'],
       ['Carrying and inventory', 'The carrying component checks whether an object is carryable, attaches it to a configured character socket, and detaches it on release. This is socket-based carrying. A separate inventory component supplies basic add, remove and clear operations for item references.'],
