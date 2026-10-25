@@ -83,16 +83,15 @@ export const projects = [
         poster: 'assets/media/aeoliada/trailer-poster.jpg'
       },
       {
-        "type": "video",
-        "title": "NPC conversation",
-        "caption": "A complete player-to-NPC conversation.",
-        "url": ""
+        type: 'gif', title: 'Dialogue interface & topic choices',
+        caption: 'A 3-second excerpt showing the NPC greeting reveal, speaker portrait and topic choices. My contribution is dialogue integration and UI; game art and other systems are team work.',
+        url: 'assets/media/aeoliada/dialogue-gameplay.gif',
+        poster: 'assets/media/aeoliada/dialogue-gif-poster.jpg'
       },
       {
-        "type": "video",
-        "title": "Dialogue flow & topic selection",
-        "caption": "Show how a conversation progresses through the interface.",
-        "url": ""
+        type: 'image', title: 'Typed dialogue interface',
+        caption: 'NPC greeting, speaker portrait and player message field in the game. The Speak button label alone does not demonstrate voice input.',
+        url: 'assets/media/aeoliada/dialogue-gameplay.png'
       },
       {
         "type": "image",
