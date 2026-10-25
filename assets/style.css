@@ -69,3 +69,4 @@
 .experience-compact>.background-summary{max-width:850px;margin:22px 0 0}
 .experience-compact .experience-row>h3{font-size:22px;font-weight:400;margin:0}
 @media(max-width:760px){.hiring-summary{font-size:13px}.hero-primary{gap:20px}.project>p:not(.project-name){margin-top:15px}}
+.gym-vault-clips{grid-column:1/-1;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:24px}@media(max-width:800px){.gym-vault-clips{grid-template-columns:1fr}}

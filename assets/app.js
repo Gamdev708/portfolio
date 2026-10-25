@@ -19,7 +19,7 @@ $('#projects').innerHTML = projects.map((p, i) => `<article class="project proje
 const dialog = $('#project-dialog');
 let trigger;
 function projectMedia(p) {
-  const items = p.gallery || [];
+  const items = (p.gallery || []).filter(item => p.id !== 'aeolida' || item.url);
   const videos = items.filter(item => item.type === 'video' || item.type === 'gif');
   const images = items.filter(item => item.type === 'image');
   return `<section class="case-section"><div class="gallery-heading"><h3>Gameplay in motion</h3><span>${videos.length} DEMONSTRATIONS</span></div><div class="video-gallery">${videos.map(renderMedia).join('')}</div></section><section class="case-section"><div class="gallery-heading"><h3>A closer look</h3><span>SCREENSHOT GALLERY</span></div><div class="image-gallery">${images.map(renderMedia).join('')}</div></section>`;
@@ -58,23 +58,64 @@ document.addEventListener('click', event => {
   button.setAttribute('aria-pressed', String(!playing));
   button.textContent = playing ? 'Play animation' : 'Pause animation';
 });
+function renderSections(p) {
+  return p.sections.map(([title,body]) => `<section class="detail-section"><h3>${escape(title)}</h3><p>${escape(body)}</p></section>`).join('');
+}
 function showProject(id) {
   const p = projects.find(p => p.id === id); if (!p) return;
   dialog.classList.toggle('feature-gym-dialog', id === 'prototypes');
   dialog.classList.toggle('aeoliada-dialog', id === 'aeolida');
-  $('#project-detail').innerHTML = `<span class="eyebrow">${escape(p.category)} / ${escape(p.name)}</span><h2 id="project-title">${escape(p.title)}</h2><p class="detail-summary">${escape(p.summary)}</p>${renderProjectContext(id)}${p.store ? `<div class="actions">${link(p.store,'View on Steam','button')}</div><p class="pending">Game overview and artwork: official Steam page. My contributions are detailed separately below.</p>` : ''}${p.store && safeUrl(p.media) ? `<img class="official-game-art" src="${safeUrl(p.media)}" alt="${escape(p.name)} official Steam artwork">` : ''}${p.jam ? `<div class="actions">${link(p.jam,'View game jam','button')}</div>` : ''}${projectMedia(p)}${p.activities ? `<section class="case-section"><div class="gallery-heading"><h3>Awurudu games</h3><span>TEAM PROJECT · FESTIVAL ACTIVITIES</span></div><div class="activity-grid">${p.activities.map(renderActivity).join('')}</div></section>` : ''}<div class="tags">${p.tags.map(t=>`<span>${escape(t)}</span>`).join('')}</div>${p.diagram.length ? `<ol class="flow" aria-label="System overview">${p.diagram.map(t=>`<li>${escape(t)}</li>`).join('')}</ol>` : ''}${id === 'aeolida' ? renderAeoliadaDiagrams() : ''}${id === 'horror-jam' ? renderHorrorDiagrams() : ''}${p.conceptArt ? `<section class="case-section team-concepts"><div class="gallery-heading"><h3>Team concept art &amp; progress</h3><span>ART TEAM · WORK IN PROGRESS</span></div><p class="aeo-intro">The team is exploring the visual direction while I develop gameplay systems. These images show the art team’s work, separate from my programming contribution. The game title and final designs are still undecided.</p><div class="image-gallery">${p.conceptArt.map(renderMedia).join('')}</div></section>` : ''}${p.sections.map(([title,body])=>`<section class="detail-section"><h3>${escape(title)}</h3><p>${escape(body)}</p></section>`).join('')}${p.references ? `<section class="detail-section"><h3>Technical reference</h3>${p.references.map(r=>link(r.url,escape(r.title))).join('')}</section>` : ''}<div class="actions">${link(p.video,'Watch gameplay','button')}${link(p.source,'View source')}${link(p.build,'Download build')}</div>${!p.video && !p.gallery.some(item => (item.type === 'video' || item.type === 'gif') && item.url) ? '<p class="pending">Gameplay footage will be added before launch.</p>' : ''}`;
+  $('#project-detail').innerHTML = `<span class="eyebrow">${escape(p.category)} / ${escape(p.name)}</span><h2 id="project-title">${escape(p.title)}</h2><p class="detail-summary">${escape(p.summary)}</p>${renderProjectContext(id)}${p.store ? `<div class="actions">${link(p.store,'View on Steam','button')}</div><p class="pending">Game overview and artwork: official Steam page. My contributions are detailed separately below.</p>` : ''}${p.store && safeUrl(p.media) ? `<img class="official-game-art" src="${safeUrl(p.media)}" alt="${escape(p.name)} official Steam artwork">` : ''}${p.jam ? `<div class="actions">${link(p.jam,'View game jam','button')}${link(p.source,'View source','button')}</div>` : ''}${projectMedia(p)}${id === 'aeolida' ? renderSections(p) : ''}${p.activities ? `<section class="case-section"><div class="gallery-heading"><h3>Awurudu games</h3><span>TEAM PROJECT · FESTIVAL ACTIVITIES</span></div><div class="activity-grid">${p.activities.map(renderActivity).join('')}</div></section>` : ''}<div class="tags">${p.tags.map(t=>`<span>${escape(t)}</span>`).join('')}</div>${p.diagram.length ? `<ol class="flow" aria-label="System overview">${p.diagram.map(t=>`<li>${escape(t)}</li>`).join('')}</ol>` : ''}${id === 'aeolida' ? renderAeoliadaDiagrams() : ''}${id === 'horror-jam' ? renderHorrorDiagrams() : ''}${p.conceptArt ? `<section class="case-section team-concepts"><div class="gallery-heading"><h3>Team concept art &amp; progress</h3><span>ART TEAM · WORK IN PROGRESS</span></div><p class="aeo-intro">The team is exploring the visual direction while I develop gameplay systems. These images show the art team’s work, separate from my programming contribution. The game title and final designs are still undecided.</p><div class="image-gallery">${p.conceptArt.map(renderMedia).join('')}</div></section>` : ''}${id === 'aeolida' ? '' : renderSections(p)}${p.references ? `<section class="detail-section"><h3>Technical reference</h3>${p.references.map(r=>link(r.url,escape(r.title))).join('')}</section>` : ''}<div class="actions">${link(p.video,'Watch gameplay','button')}${p.jam ? '' : link(p.source,'View source')}${link(p.build,'Download build')}</div>${!p.video && !p.gallery.some(item => (item.type === 'video' || item.type === 'gif') && item.url) ? '<p class="pending">Gameplay footage will be added before launch.</p>' : ''}`;
   if (id === 'prototypes') $('#project-detail').innerHTML = renderFeatureGym();
   if (!dialog.open) dialog.showModal();
   dialog.scrollTop = 0;
 }
-document.addEventListener('click', event => { const button = event.target.closest('[data-project]'); if(button) { trigger = button; showProject(button.dataset.project); history.replaceState(null, '', `#project-${button.dataset.project}`); } });
-$('#close-dialog').addEventListener('click',()=>dialog.close());
+function syncProjectFromUrl() {
+  const id = location.hash.startsWith('#project-') ? location.hash.slice(9) : '';
+  if (projects.some(p => p.id === id)) {
+    if (!dialog.open || dialog.dataset.project !== id) {
+      showProject(id);
+      dialog.dataset.project = id;
+    }
+  } else if (dialog.open) {
+    dialog.close();
+  }
+}
+function closeProject() {
+  if (history.state?.portfolioProject === location.hash) {
+    history.back();
+  } else {
+    // A directly opened project link has no in-page entry to return to.
+    history.replaceState(null, '', '#work');
+    syncProjectFromUrl();
+  }
+}
+document.addEventListener('click', event => {
+  const button = event.target.closest('[data-project]');
+  if (!button || !projects.some(p => p.id === button.dataset.project)) return;
+  trigger = button;
+  const hash = '#project-' + button.dataset.project;
+  if (location.hash !== hash) history.pushState({portfolioProject: hash}, '', hash);
+  syncProjectFromUrl();
+});
+$('#close-dialog').addEventListener('click', closeProject);
+dialog.addEventListener('cancel', event => { event.preventDefault(); closeProject(); });
+window.addEventListener('popstate', syncProjectFromUrl);
+window.addEventListener('hashchange', syncProjectFromUrl);
+
 dialog.addEventListener('click',event=> {
   const anchor = event.target.closest('.gym-nav a');
   if (!anchor) return;
   event.preventDefault();
   dialog.querySelector(anchor.getAttribute('href'))?.scrollIntoView({behavior:matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth',block:'start'});
 });
-dialog.addEventListener('click',event=> { if(event.target === dialog) { const r = dialog.getBoundingClientRect(); if(event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) dialog.close(); } });
-dialog.addEventListener('close',()=> { dialog.querySelectorAll('video').forEach(video => video.pause()); $('#project-detail').innerHTML = ''; history.replaceState(null, '', '#work'); trigger?.focus(); });
-if(location.hash.startsWith('#project-')) showProject(location.hash.slice(9));
+dialog.addEventListener('click',event=> { if(event.target === dialog) { const r = dialog.getBoundingClientRect(); if(event.clientX < r.left || event.clientX > r.right || event.clientY < r.top || event.clientY > r.bottom) closeProject(); } });
+dialog.addEventListener('close', () => {
+  // A queued close event must not clear a project reopened by rapid navigation.
+  if (dialog.open) return;
+  dialog.querySelectorAll('video').forEach(video => video.pause());
+  $('#project-detail').innerHTML = '';
+  delete dialog.dataset.project;
+  trigger?.focus({preventScroll: true});
+});
+syncProjectFromUrl();

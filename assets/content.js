@@ -108,14 +108,39 @@ export const projects = [
       }
     ],
     sections: [
-      ['About the game', 'Aeoliada is an action RPG by Arcanion combining melee combat with rhythm mechanics. The official Steam page presents the game and its public media.'],
-      ['My contribution', 'Worked with the team to create AI-powered NPC dialogue intended for the game’s release, and resolved gameplay bugs. I implemented the core C++ logic for dialogue interaction, relationship feedback, quest state and UI controllers. I exposed configuration through Blueprints, data tables and data assets so designers could tune behavior and content without editing the underlying C++ logic.'],
-      ['UI design approach', 'I use MVVM principles to separate presentation from gameplay state. Quest widgets handle the view, a widget controller tracks selection and forwards updates, and the quest subsystem manages progress. Dialogue follows a manager-mediated flow rather than strict automatic MVVM binding.'],
-      ['Dialogue architecture', 'The project separates character interaction into a component and conversation display into a world subsystem. Completion actions coordinate topic selection, chat requests, and conversation endings.'],
-      ['Built for designer iteration', 'I provided editable settings for NPC personality, speech style, characteristic phrases, reference dialogue, topic preferences, relationship limits and response curves. Quest data assets expose objective descriptions, types, targets, required amounts and navigation options. Designers can create and tune content using these exposed controls while the core gameplay logic remains in C++.'],
-      ['Working with a team', 'My focus was dialogue integration and bug fixing. The project includes contributions from other team members; this page does not claim authorship of the entire game or the underlying AI models.'],
-      ['What I learned — documenting for the team', 'Working with the team taught me to document the work I completed, summarize what changed, and write clear, step-by-step instructions. I learned to explain systems in a way teammates could understand and follow, helping them use the features and continue working with them.'],
-    ],
+      [
+            "My contribution",
+            "I developed the dialogue widget, conversation manager and interaction component for typed AI conversations, integrating an existing AI plugin. My wider contributions included relationship feedback, quest UI and gameplay bug fixes. The game and AI plugin are team and third-party work; this case study focuses on my integration and UI work."
+      ],
+      [
+            "The requirement: from scripted choices to typed conversation",
+            "The existing dialogue system selected predefined lines from data tables according to player choices. The new requirement was to let players select a topic, type their own messages and receive an in-character NPC response. I adapted the dialogue flow to handle generated responses rather than only stepping through authored lines."
+      ],
+      [
+            "My decision: separate conversation flow from presentation",
+            "I treated the AI plugin as a service for model requests. The interaction component prepares conversation context and handles responses; the manager coordinates the interface and conversation steps; the widget presents speaker portraits, text and topic choices. This separation let me reuse the same widget across characters instead of tying each interface directly to model requests."
+      ],
+      [
+            "Reuse and iteration",
+            "I reused the existing character-by-character text-reveal function rather than rebuilding it. Its completion event helps coordinate the next conversation step. I tested the shared widget with three characters, changing the displayed portrait to identify the speaker. I also reorganized parts of the layout with Overlays and Size Boxes; I did not measure a performance improvement."
+      ],
+      [
+            "Conversation history and manual testing",
+            "The interface keeps a display history for browsing earlier dialogue, separate from the conversation context sent to the AI. In my playtests, I could browse earlier messages, return to the latest exchange and continue typing. I also observed earlier entries remaining available when sending while viewing an older message. These are my manual observations; a later source review raised an indexing concern that has not been independently reproduced or resolved."
+      ],
+      [
+            "What still needed refinement",
+            "Generated replies sometimes included unwanted action descriptions such as laughing. The team refined the prompt and observed fewer occurrences, but the behavior was not completely eliminated. I tested typed conversations across three characters; I do not have retained transcripts or a separate accuracy evaluation for topic analysis and scoring. Voice input belongs to another version and is outside the implementation described here."
+      ],
+      [
+            "Working with designers and the team",
+            "I exposed character and gameplay settings through Blueprints and data assets so designers could configure content without editing the core C++ logic. This work also taught me to document changes and provide clear, step-by-step instructions for teammates. My quest UI follows MVVM-inspired separation; the dialogue flow uses a manager rather than strict automatic MVVM binding."
+      ],
+      [
+            "Confidentiality",
+            "This project is covered by an NDA. No project source code or code excerpts are included in this case study."
+      ]
+],
     diagram: ['Player message', 'Dialogue interaction', 'AI provider', 'NPC dialogue UI'],
   },
   {
@@ -162,11 +187,35 @@ export const projects = [
       }
     ],
     sections: [
-      ['Project context', 'Virtual Awurudu is a Sri Lankan New Year festival experience by RAM Studios, presented through SriVerse. I contributed during my internship in Sri Lanka, working in Unreal Engine 5.1.'],
-      ['My contribution — multiplayer bug fixing', 'Checked each festival game individually for sequence-playback replication issues. For affected sequences across multiple games, enabled Replicate Playback on the relevant Level Sequence Actors so server-side playback synchronized across clients.'],
-      ['Why this setting matters', 'A Level Sequence can play locally without synchronizing to other players. UE 5.1 exposes Replicate Playback specifically for synchronizing server playback to clients. This describes the sequence-playback fix, rather than a claim that one setting replicates every gameplay system or animated actor.'],
-      ['Festival games', 'The project includes Kana Mutti, Kotta Pora, Kamba Adima, and Lissana Gaha. These sections provide context for the team’s game; my highlighted contribution is the replication bug fix.'],
-    ],
+      [
+            "Project context and my role",
+            "Virtual Awurudu is a Sri Lankan New Year festival experience by RAM Studios, presented through SriVerse. During my internship, much of my work involved research and development. This example focuses on investigating multiplayer sequence playback in Unreal Engine 5.1. The festival footage shows the wider team project, not a before-and-after recording of my fix."
+      ],
+      [
+            "Problem: NPC activities appeared out of sync",
+            "While testing with multiple players in the Unreal Editor, I observed NPC festival actions appearing out of sync between clients. I was still learning Unreal replication and needed to understand what was driving these actions before deciding how to synchronize them."
+      ],
+      [
+            "Investigation and team constraint",
+            "I explored variable replication and experimented with C++ approaches to some mechanics. The team needed a Blueprint-based workflow that remained accessible on the development machines available to the interns. Investigating the repeated NPC actions revealed that they were driven by Level Sequences, which led me to research sequence-playback replication in the Unreal documentation."
+      ],
+      [
+            "Fix: configure the sequence actors",
+            "I checked each festival activity and enabled Replicate Playback on its relevant Level Sequence Actors. This addressed synchronization at the system driving those NPC actions, rather than requiring a separate C++ rewrite of each activity."
+      ],
+      [
+            "Validation and observed result",
+            "I tested using multiple players in the Unreal Editor. After the change, I observed the sequence-driven actions progressing across all connected clients. This was a manual editor check; I did not measure timing differences or establish behavior under production network conditions."
+      ],
+      [
+            "Scope and remaining work",
+            "The result described here concerns NPC sequence playback. I also investigated separate player-replication issues, including unexpected movement snapping, but that work remained partially unresolved. I do not attribute those player issues to the same cause or claim that enabling Replicate Playback fixed every multiplayer problem."
+      ],
+      [
+            "What I learned",
+            "This investigation taught me to identify the system responsible for a visible behavior before choosing a replication approach. Researching the existing sequence settings led to a focused change that fit the team workflow."
+      ]
+],
     diagram: ['Server starts sequence', 'Replicate Playback enabled', 'Playback state synchronizes', 'Clients play sequence'],
   },
   {
@@ -178,7 +227,7 @@ export const projects = [
     jam: 'https://itch.io/jam/what-are-you-afraid-of-',
     gallery: [
       {type: 'gif', title: 'Room-camera transitions', caption: 'Fixed camera views change while moving through the greybox test area · 5.4 seconds.', url: 'assets/media/horror-jam/camera-transitions.gif', poster: 'assets/media/horror-jam/camera-transitions.jpg'},
-      {type: 'gif', title: 'Item interaction', caption: 'An item-consumption example demonstrates an object-specific response through the shared interaction interface · 3.9 seconds.', url: 'assets/media/horror-jam/item-interaction.gif', poster: 'assets/media/horror-jam/item-interaction.jpg'},
+      {type: 'gif', title: 'Item interaction', caption: 'A test object is removed through an object-specific response to the shared interaction interface · 3.9 seconds.', url: 'assets/media/horror-jam/item-interaction.gif', poster: 'assets/media/horror-jam/item-interaction.jpg'},
       {type: 'gif', title: 'Carrying & release', caption: 'A carryable test object is attached to the character and released. Debug shapes show the interaction scan · 4 seconds.', url: 'assets/media/horror-jam/carry-and-release.gif', poster: 'assets/media/horror-jam/carry-and-release.jpg'},
       {type: 'image', title: 'Interaction debugging', caption: 'My gameplay capture: the debug scan visualizes interaction detection in the greybox prototype.', url: 'assets/media/horror-jam/interaction-debug.jpg'},
       {type: 'image', title: 'Greybox test area', caption: 'A test environment for checking item interactions and camera views before the demo level is finalized.', url: 'assets/media/horror-jam/greybox-overview.jpg'}
@@ -189,14 +238,37 @@ export const projects = [
       {type: 'image', title: 'Creature design exploration', caption: 'Team concept art · work in progress. Creature studies explore the game’s visual direction; these are not implemented enemy mechanics.', url: 'assets/media/horror-jam/creature-concepts.png'}
     ],
     sections: [
-      ['Project context', 'A team horror game being developed for the WHAT ARE YOU AFRAID OF? jam on itch.io, hosted by earacorn. The game title is still undecided. I am responsible for gameplay programming; the team develops the art, design and other disciplines together. The jam invites creators to explore their personal fears through horror. My current work establishes reusable interaction and room-camera systems in a greybox test level while the team plans the demo gameplay loop and final level design.'],
-      ['My role — gameplay programmer', 'I am in charge of gameplay programming for the team. I implemented the C++ interaction scan, carrying component, basic inventory operations, and room-transition trigger logic. I exposed Blueprint interaction events and editable settings so designers can create object-specific responses and configure the level without rewriting the shared C++ behavior.'],
-      ['One interaction interface, different objects', 'The character performs a forward sphere sweep, checks which actors support the shared interface, and evaluates whether they can be interacted with. Focus events let object Blueprints respond when targeted, while an interaction action passes the player to the selected object. The interface also exposes prompt text and carry eligibility.'],
-      ['Carrying and inventory', 'The carrying component checks whether an object is carryable, attaches it to a configured character socket, and detaches it on release. This is socket-based carrying. A separate inventory component supplies basic add, remove and clear operations for item references.'],
-      ['Room transitions & camera selection', 'A configurable overlap trigger selects an assigned camera and broadcasts destination-room and spawn-point tags for other systems or Blueprints to handle. Designers can set a default camera and choose one-way or repeatable activation. Broadcasting those tags is a hook for progression, rather than a claim that this component performs level streaming itself.'],
-      ['Built for iteration', 'Designers can tune interaction range and sweep radius, choose a carry socket, implement object behavior and focus feedback in Blueprints, and assign transition cameras and room tags per trigger. I test the systems by playing the prototype and inspecting on-screen debug output.'],
-      ['Current scope', 'The footage shows prototype interactions and camera behavior, not a finished horror level. Generator, fuse-box, gear and wiring puzzles are design ideas under discussion with the team. This page highlights the implemented foundations rather than presenting those ideas as completed mechanics.']
-    ],
+      [
+            "Project context and my role",
+            "An early team prototype for the WHAT ARE YOU AFRAID OF? horror game jam. The story and gameplay loop are still being explored, so I started with simple, reusable mechanics that we could try in a greybox level. I am responsible for gameplay programming; the concept art shown here is the art team’s work."
+      ],
+      [
+            "Decision: shared C++ foundations, Blueprint responses",
+            "I wanted programmers to share one interaction path and designers to define what each object does without editing the core C++. I implemented the detection and interaction flow in C++ and exposed a shared interface for object-specific Blueprint responses. The character scans for eligible objects and sends the interaction to the selected object; each object supplies its own behavior. This separates common interaction handling from the gameplay we are still experimenting with."
+      ],
+      [
+            "Concrete reuse: doors and removable objects",
+            "I used the same interaction interface for doors that open and close and for test objects that disappear when interacted with. These have different responses but use the same player interaction key and shared detection path. I manually tested opening and closing the doors and removing the test objects in the prototype. Object removal alone does not demonstrate an inventory or item-effect system."
+      ],
+      [
+            "Why I chose this approach",
+            "The Unreal Fest talk about Clair Obscur: Expedition 33 inspired me to think about a shared workflow for programmers and designers. I applied that idea through my own C++ foundations and Blueprint interaction responses. New objects can define their responses in Blueprints, while changes to the shared detection rules still belong in the C++ layer."
+      ],
+      [
+            "Supporting gameplay foundations",
+            "I also implemented socket-based carrying and release, basic inventory add/remove/clear operations, and room-camera triggers. The triggers select an assigned camera and broadcast room and spawn-point tags for other systems to handle. Designers can configure interaction range, carry sockets and camera assignments. These are supporting prototype systems, not a completed puzzle or level-streaming system."
+      ],
+      [
+            "Current scope and next step",
+            "The footage shows early interactions and camera behavior while the team works out the story and mechanics. The door and object-removal checks demonstrate reuse across two behaviors; they are not comprehensive gameplay validation. The next step is to use these foundations in the team’s chosen gameplay loop and evaluate what needs to change."
+      ]
+],
+    references: [
+      {
+            "title": "The Technical Journey of Clair Obscur: Expedition 33 | Unreal Fest Stockholm 2025 — Unreal Engine",
+            "url": "https://www.youtube.com/watch?v=t1CrbTx6O6w"
+      }
+],
     diagram: [],
   },
 ];

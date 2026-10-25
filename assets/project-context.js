@@ -13,7 +13,7 @@ const contexts = {
     description: 'An action RPG by Arcanion. My contribution focuses on core gameplay logic, NPC dialogue, relationships and quest UI, with exposed controls for designers.',
     role: 'Gameplay programmer · dialogue, relationships & quest UI',
     stage: 'Team development · dialogue intended for release',
-    preview: 'Official trailer, UI architecture and contribution diagrams'
+    preview: 'Dialogue development story, official trailer and supporting diagrams'
   },
   'virtual-aurudu': {
     status: 'TEAM PROJECT · STUDIO INTERNSHIP',
