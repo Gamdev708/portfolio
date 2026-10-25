@@ -3,7 +3,7 @@ export const profile = {
   email: '',
   github: 'https://github.com/Gamdev708',
   linkedin: 'https://www.linkedin.com/in/pasindu-siriwardana-a39727219/',
-  resume: '',
+  resume: 'assets/Pasindu-Siriwardana-CV-Portfolio.pdf',
   intro: 'I build character gameplay and reusable systems with Unreal Engine and C++. My work spans combat, traversal, AI-powered NPC dialogue, and vehicle gameplay.',
 };
 
@@ -13,9 +13,9 @@ export const projects = [
   {
     id: 'prototypes', number: '01', title: 'Feature Gym — Combat & traversal', name: 'Feature Gym',
     category: 'Personal project', tags: ['Unreal Engine', 'C++', 'Plugins'],
-    summary: 'A gameplay playground built around two reusable plugins: a combo system and an advanced parkour system.',
+    summary: 'I developed reusable C++ combat and parkour plugins, with configurable combo branches, held attacks and custom character movement.',
     focus: 'Character gameplay / Plugin architecture',
-    media: 'assets/media/feature-gym/wall-run-clean.jpg', video: '', source: '', build: '',
+    media: 'assets/media/feature-gym/wall-run-clean.jpg', video: '', source: 'https://github.com/Gamdev708/FeatureGym', build: '',
     gallery: [
       {
         "type": "video",
